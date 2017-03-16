@@ -1,0 +1,14 @@
+Package: micturate
+Type: Package
+Title: Urinary analysis tools
+Version: 0.1.0
+Author: Tom Wilson <tpw2@aber.ac.uk>
+Maintainer: Tom Wilson <tpw2@aber.ac.uk>
+Description: Simple tools for helping with various aspects of urinary analysis
+License: GNU (GPL >= 3)
+Encoding: UTF-8
+LazyData: true
+Suggests: 
+    testthat
+URL: https://github.com/wilsontom/micturate
+BugReports: https://github.com/wilsontom/micturate/issues
