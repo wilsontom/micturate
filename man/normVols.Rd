@@ -7,7 +7,9 @@
 normVols(df, volume)
 }
 \arguments{
-\item{df}{a \code{data.frame} with the following columns
+\item{df}{a \code{data.frame} with the following columns}
+
+\item{volume}{a numeric value for the total volume of each single sample to be used
 \describe{
 \item{id}{Unique sample identifier}
 \item{value}{A value for urine conenctration (refractive index, osmolarity, etc..)}

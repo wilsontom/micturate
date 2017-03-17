@@ -4,6 +4,7 @@
 #' on a measure of urine concentration (ie, refractive index)
 #'
 #' @param df a \code{data.frame} with the following columns
+#' @param volume a numeric value for the total volume of each single sample to be used
 #' \describe{
 #' \item{id}{Unique sample identifier}
 #' \item{value}{A value for urine conenctration (refractive index, osmolarity, etc..)}
