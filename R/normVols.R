@@ -1,17 +1,20 @@
 #' Create normalisation volumes
 #'
+#' Calculate the required Urine:Water volume for creating pools from multiple single urine samples, based
+#' on a measure of urine concentration (ie, refractive index)
+#'
 #' @param df a \code{data.frame} with the following columns
 #' \describe{
-#' \item{id}
-#' \item{value}
-#' \item{cls}
+#' \item{id}{Unique sample identifier}
+#' \item{value}{A value for urine conenctration (refractive index, osmolarity, etc..)}
+#' \item{cls}{The class which sample will be grouped into for pooling}
 #' }
 #' @return a \code{data.frame} with the following columns
-#' \item{id}
-#' \item{value}
-#' \item{cls}
-#' \item{UrineVol}
-#' \item{WaterVol}
+#' \item{id}{Unique sample identifier}
+#' \item{value}{A value for urine conenctration (refractive index, osmolarity, etc..)}
+#' \item{cls}{The class which sample will be grouped into for pooling}
+#' \item{UrineVol}{The volume of urine required}
+#' \item{WaterVol}{The volume of water required}
 #'
 #' @author Tom Wilson \email{tpw2@@aber.ac.uk}
 #' @export
