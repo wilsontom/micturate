@@ -1,18 +1,18 @@
 language: r
 warnings_are_errors: false
 sudo: required
+dist: trusty
 
-r_packages:
- - covr
- - testthat
+r:
+ - release
+ - devel
 
-after_success: 
- - Rscript -e 'covr::codecov()'
+after_success:
+ - Rscript -e 'library(covr); codecov()'
 
 notifications:
   email:
    on_success: change
    on_failure: change
-
 
 
