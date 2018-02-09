@@ -10,25 +10,26 @@ normVols(df, volume)
 \item{df}{a \code{data.frame} with the following columns}
 
 \item{volume}{a numeric value for the total volume of each single sample to be used
-\describe{
-\item{id}{Unique sample identifier}
-\item{value}{A value for urine conenctration (refractive index, osmolarity, etc..)}
-\item{cls}{The class which sample will be grouped into for pooling}
+\itemize{
+\item \strong{\code{id}} Unique sample identifier
+\item \strong{\code{value}} A value for urine conenctration (refractive index, osmolarity, etc..)
+\item \strong{\code{cls}} The class which sample will be grouped into for pooling
 }}
 }
 \value{
 a \code{data.frame} with the following columns
-\item{id}{Unique sample identifier}
-\item{value}{A value for urine conenctration (refractive index, osmolarity, etc..)}
-\item{cls}{The class which sample will be grouped into for pooling}
-\item{UrineVol}{The volume of urine required}
-\item{WaterVol}{The volume of water required}
+\itemize{
+\item \strong{\code{id}} Unique sample identifier
+\item \strong{\code{value}} A value for urine conenctration (refractive index, osmolarity, etc..)
+\item \strong{\code{cls}} The class which sample will be grouped into for pooling
+\item \strong{\code{UrineVol}} The volume of urine required
+\item \strong{\code{WaterVol}}  The volume of water required
+}
 }
 \description{
 Calculate the required Urine:Water volume for creating pools from multiple single urine samples, based
 on a measure of urine concentration (ie, refractive index)
 }
 \author{
-Tom Wilson \email{tpw2@aber.ac.uk}
+Tom Wilson \code{tpw2@aber.ac.uk}
 }
-

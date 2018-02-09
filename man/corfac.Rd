@@ -10,4 +10,3 @@ corfac(x, volume)
 Create normalisation correction factors
 }
 \keyword{internal}
-

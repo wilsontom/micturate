@@ -12,4 +12,5 @@ Suggests:
     testthat
 URL: https://github.com/wilsontom/micturate
 BugReports: https://github.com/wilsontom/micturate/issues
-RoxygenNote: 5.0.0
+RoxygenNote: 6.0.1
+Roxygen: list(markdown = TRUE)
