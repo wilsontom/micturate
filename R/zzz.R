@@ -1,0 +1,12 @@
+globalVariables(
+  c(
+    '.',
+    'value',
+    'water_volume',
+    'urine_volume',
+    'group',
+    'sample_name',
+    'nacl_sg_standards',
+    'sample_id'
+  )
+)
