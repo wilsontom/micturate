@@ -1,22 +1,26 @@
 Package: micturate
 Type: Package
-Title: Urinary analysis tools
-Version: 0.2.0
-Author: Tom Wilson <tpw2@aber.ac.uk>
-Maintainer: Tom Wilson <tpw2@aber.ac.uk>
+Title: Tools for urine samples
+Version: 0.1.0
+Authors@R: c(
+    person("Tom", "Wilson", , "tpw2@aber.ac.uk", c("aut", "cre")))
 Description: Simple tools for helping with various aspects of urinary analysis.
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 Depends:
-    dplyr,
-    ggplot2
+    R (>= 2.10),
+    magrittr
 Imports:
-    readxl
+    dplyr,
+    tidyr,
+    tibble,
+    gaml2r
 Suggests:
     testthat,
-    covr
+    covr,
+    readr
 URL: https://github.com/wilsontom/micturate
 BugReports: https://github.com/wilsontom/micturate/issues
-RoxygenNote: 6.0.1
+RoxygenNote: 7.1.2
 Roxygen: list(markdown = TRUE)
