@@ -37,16 +37,17 @@ jobs:
           r-version: ${{ matrix.config.r }}
           http-user-agent: ${{ matrix.config.http-user-agent }}
           use-public-rspm: true
+          
+      - name: Install dependencies
+        run: remotes::install_github("wilsontom/gaml2r")
+        shell: Rscript {0}
 
       - uses: r-lib/actions/setup-r-dependencies@v1
         with:
           extra-packages: rcmdcheck
 
       - uses: r-lib/actions/check-r-package@v1
-      
-      - name: Install dependencies
-        run: remotes::install_github("wilsontom/gaml2r")
-        shell: Rscript {0}
+    
 
       - name: Show testthat output
         if: always()
