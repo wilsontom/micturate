@@ -39,7 +39,9 @@ jobs:
           use-public-rspm: true
           
       - name: Install dependencies
-        run: remotes::install_github("wilsontom/gaml2r")
+         run: |
+          install.packages('remotes')
+          remotes::install_github("wilsontom/gaml2r")
         shell: Rscript {0}
 
       - uses: r-lib/actions/setup-r-dependencies@v1
