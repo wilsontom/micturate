@@ -58,6 +58,7 @@ jobs:
         run: |
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran(c("rcmdcheck","goodpractice", "covr"))
+          remotes::install_github('wilsontom/gaml2r')
         shell: Rscript {0}
 
       - name: Check
