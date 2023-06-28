@@ -4,10 +4,13 @@
 \alias{refractive_index_prediction}
 \title{Predict RI values from HPLC-RI}
 \usage{
-refractive_index_prediction(gaml_file)
+refractive_index_prediction(gaml_file, standards)
 }
 \arguments{
-\item{gaml_file}{a GAML file containing HPLC-RI data. See micturate::plate_maps('urine_ri') for more details}
+\item{gaml_file}{a GAML file containing HPLC-RI data.}
+
+\item{standards}{a two column \code{tbl_df} of external calibration standards. Columns must be named \code{sample_name} and \code{specific_gravity}. \code{sample_name} should use the format \code{S01}, \code{S02}, \code{S03}, etc...
+If \code{NULL} then a set of package calibration standards will be used instead.}
 }
 \value{
 a \code{tbl_df} of predicted refractive index values
