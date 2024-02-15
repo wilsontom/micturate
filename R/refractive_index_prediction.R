@@ -49,6 +49,6 @@ refractive_index_prediction <- function(gaml_file, standards)
 
 
 
-  return(ri_results)
+  return(ri_final)
 
 }
