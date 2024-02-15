@@ -11,7 +11,8 @@
 
 refractive_index_prediction <- function(gaml_file, standards)
 {
-  gaml_tbl <- gaml2r::openFile(gaml_file, output = 'tbl_df')
+  gaml_tbl <- gaml2r::openFile(gaml_file, output = 'tbl_df', include_injection_info = TRUE) %>%
+    dplyr::select(sample_name, value, position)
 
   max_ri_values <- gaml_tbl %>%
     dplyr::group_by(sample_name) %>%
@@ -23,6 +24,7 @@ refractive_index_prediction <- function(gaml_file, standards)
     standards_only <- standards %>%
       dplyr::left_join(., max_ri_values, by = 'sample_name')
   } else{
+    data(nacl_sg_standards)
     standards_only <- nacl_sg_standards %>%
       dplyr::left_join(., max_ri_values, by = 'sample_name')
   }
@@ -38,6 +40,13 @@ refractive_index_prediction <- function(gaml_file, standards)
 
   ri_results <-
     max_ri_values %>% dplyr::mutate(predicted_value = predict_ri)
+
+
+  sample_position <-
+    gaml_tbl %>% dplyr::select(-value) %>% dplyr::distinct()
+
+  ri_final <- ri_results %>% dplyr::left_join(., sample_position, by = 'sample_name')
+
 
 
   return(ri_results)
