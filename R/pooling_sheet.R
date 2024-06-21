@@ -29,7 +29,7 @@ pooling_sheet <- function(ri_data, norm_value, volume)
     dplyr::group_by(sample_name) %>% dplyr::summarise(water = sum(water_volume))
 
 
-  pooling_final <- urine_only %>% dplyr::left_join(., water_only, by = 'sample_id')
+  pooling_final <- urine_only %>% dplyr::left_join(., water_only, by = 'sample_name')
 
 
   return(pooling_final)
