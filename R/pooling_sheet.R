@@ -11,6 +11,9 @@
 pooling_sheet <- function(ri_data, norm_value, volume)
 {
 
+  ri_data$value[ri_data$value < norm_value] <- norm_value
+
+
   corfac <- correction_factor(ri_data$value, norm_value = norm_value)
 
   norm_vols <- normalisation_volumes(corfac, total_volume = volume)
@@ -20,8 +23,9 @@ pooling_sheet <- function(ri_data, norm_value, volume)
                               water_volume = norm_vols$water_volume)
 
 
+
   urine_only <-
-    ri_data_all %>% dplyr::select(-value,-water_volume) %>%
+    ri_data_all %>% dplyr::select(-value,-water_volume)  %>%
     tidyr::pivot_wider(names_from = group, values_from = urine_volume)
 
   water_only <-
