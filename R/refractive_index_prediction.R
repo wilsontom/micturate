@@ -24,8 +24,7 @@ refractive_index_prediction <- function(gaml_file, standards)
     standards_only <- standards %>%
       dplyr::left_join(., max_ri_values, by = 'sample_name')
   } else{
-    data(nacl_sg_standards)
-    standards_only <- nacl_sg_standards %>%
+    standards_only <- micturate:::nacl_sg_standards %>%
       dplyr::left_join(., max_ri_values, by = 'sample_name')
     }
 
