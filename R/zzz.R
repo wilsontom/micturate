@@ -7,6 +7,8 @@ globalVariables(
     'group',
     'sample_name',
     'nacl_sg_standards',
-    'sample_id'
+    'sample_id',
+    'position',
+    'data'
   )
 )
