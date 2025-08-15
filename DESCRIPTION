@@ -1,7 +1,7 @@
 Package: micturate
 Type: Package
 Title: Tools for urine samples
-Version: 0.1.0
+Version: 0.1.2
 Authors@R: c(
     person("Tom", "Wilson", , "tpw2@aber.ac.uk", c("aut", "cre")))
 Description: Simple tools for helping with various aspects of urinary analysis.
@@ -9,7 +9,7 @@ License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 Depends:
-    R (>= 2.10),
+    R (>= 3.5),
     magrittr
 Imports:
     dplyr,
@@ -22,5 +22,5 @@ Suggests:
     readr
 URL: https://github.com/wilsontom/micturate
 BugReports: https://github.com/wilsontom/micturate/issues
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 Roxygen: list(markdown = TRUE)
