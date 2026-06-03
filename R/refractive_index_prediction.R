@@ -9,22 +9,59 @@
 #' @importFrom magrittr %>%
 #' @importFrom stats lm predict
 
+decode_gaml_array <- function(x, size = 8)
+{
+  encoded_values <- gsub("\\s+", "", x)
+  raw_values <- base64enc::base64decode(encoded_values)
+
+  readBin(
+    raw_values,
+    what = "double",
+    n = length(raw_values) / size,
+    size = size,
+    endian = .Platform$endian
+  )
+}
+
+extract_gaml_max_ri <- function(experiment)
+{
+  sample_name <- xml2::xml_attr(experiment, "name")
+
+  position <- xml2::xml_find_first(experiment, "./parameter[@name='position']") %>%
+    xml2::xml_text()
+
+  y_values <- xml2::xml_find_first(experiment, ".//Ydata/values") %>%
+    xml2::xml_text() %>%
+    decode_gaml_array()
+
+  tibble::tibble(
+    sample_name = sample_name,
+    value = max(y_values),
+    position = position
+  )
+}
+
+read_gaml_max_ri <- function(gaml_file)
+{
+  if (tools::file_ext(gaml_file) != "gaml") {
+    stop("`gaml_file` must be a .gaml file.", call. = FALSE)
+  }
+
+  xml_doc <- xml2::read_xml(gaml_file)
+  experiments <- xml2::xml_find_all(xml_doc, ".//experiment")
+
+  dplyr::bind_rows(lapply(experiments, extract_gaml_max_ri))
+}
+
 refractive_index_prediction <- function(gaml_file, standards)
 {
-  gaml_tbl <- gaml2r::openFile(gaml_file, output = 'tbl_df', include_injection_info = TRUE) %>%
-    dplyr::select(sample_name, value, position)
-
-  max_ri_values <- gaml_tbl %>%
-    dplyr::group_by(sample_name) %>%
-    dplyr::summarise(value = max(value))
-
-
+  max_ri_values <- read_gaml_max_ri(gaml_file)
 
   if (!is.null(standards)) {
     standards_only <- standards %>%
       dplyr::left_join(., max_ri_values, by = 'sample_name')
   } else{
-    standards_only <- micturate:::nacl_sg_standards %>%
+    standards_only <- nacl_sg_standards %>%
       dplyr::left_join(., max_ri_values, by = 'sample_name')
     }
 
@@ -38,16 +75,11 @@ refractive_index_prediction <- function(gaml_file, standards)
 
 
   ri_results <-
-    max_ri_values %>% dplyr::mutate(predicted_value = predict_ri)
-
-
-  sample_position <-
-    gaml_tbl %>% dplyr::select(-value) %>% dplyr::distinct()
-
-  ri_final <- ri_results %>% dplyr::left_join(., sample_position, by = 'sample_name')
+    max_ri_values %>% dplyr::mutate(predicted_value = predict_ri) %>%
+    dplyr::select(sample_name, value, predicted_value, position)
 
 
 
-  return(ri_final)
+  return(ri_results)
 
 }
