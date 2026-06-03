@@ -9,6 +9,7 @@ globalVariables(
     'nacl_sg_standards',
     'sample_id',
     'position',
-    'data'
+    'data',
+    'predicted_value'
   )
 )
